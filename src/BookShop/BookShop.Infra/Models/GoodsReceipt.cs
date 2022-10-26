@@ -10,10 +10,13 @@ namespace BookShop.Infra.Models
     {
         public GoodsReceipt()
         {
-            this.Items = new HashSet<GoodsReceiptItem>();
+            this.GoodsReceiptItems = new HashSet<GoodsReceiptItem>();
         }
 
         public int Id { get; set; }
+
+        [StringLength(100)]
+        public string DocNo { get; set; }
 
         [Required]
         public int Status { get; set; }
@@ -30,6 +33,6 @@ namespace BookShop.Infra.Models
         [Required]
         public DateTime TimeUpdate { get; set; }
 
-        public virtual ICollection<GoodsReceiptItem> Items { get; set; }
+        public virtual ICollection<GoodsReceiptItem> GoodsReceiptItems { get; set; }
     }
 }

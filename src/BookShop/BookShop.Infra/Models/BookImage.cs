@@ -21,8 +21,6 @@ namespace BookShop.Infra.Models
 
         public int BookId { get; set; }
 
-        public virtual Book Book { get; set; }
-
         [Required]
         public int Status { get; set; }
 
@@ -37,5 +35,7 @@ namespace BookShop.Infra.Models
 
         [Required]
         public DateTime TimeUpdate { get; set; }
+
+        public virtual Book Book { get; set; }
     }
 }
