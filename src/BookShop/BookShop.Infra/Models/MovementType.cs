@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BookShop.Infra.Models
 {
-    [Table("GoodsReceipt")]
-    public class GoodsReceipt
+    [Table("MovementType")]
+    public class MovementType
     {
-        public GoodsReceipt()
+        public MovementType()
         {
-            this.Items = new HashSet<GoodsReceiptItem>();
+            this.StockMovements = new HashSet<StockMovement>(); 
         }
 
         public int Id { get; set; }
+
+        [Required, StringLength(100)]
+        public string Name { get; set; }
 
         [Required]
         public int Status { get; set; }
@@ -30,6 +36,6 @@ namespace BookShop.Infra.Models
         [Required]
         public DateTime TimeUpdate { get; set; }
 
-        public virtual ICollection<GoodsReceiptItem> Items { get; set; }
+        public ICollection<StockMovement> StockMovements { get; set; }
     }
 }

@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShop.Infra.Models
 {
+    [Table("GoodsReceiptItem")]
     public class GoodsReceiptItem
     {
-        public int GoodsReceiptId { get; set; }//Key
-        public int Num { get; set; }//Key
+        public int GoodsReceiptId { get; set; }
+
+        public int Num { get; set; }
+
+        [Required]
+        public int BookId { get; set; }
+
+        [Required]
+        public int Qty { get; set; }
 
         public virtual GoodsReceipt GoodsReceipt { get; set; }
+
+        public virtual Book Book { get; set; }
     }
 }

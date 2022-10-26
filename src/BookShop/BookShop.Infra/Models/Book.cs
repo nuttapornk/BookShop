@@ -15,6 +15,8 @@ namespace BookShop.Infra.Models
         {
             this.BookImages = new HashSet<BookImage>();
             this.BookCategories = new HashSet<BookCategory>();  
+            this.GoodsReceiptItems = new HashSet<GoodsReceiptItem>();
+            this.StockMovements = new HashSet<StockMovement>();
         }
         public int Id { get; set; }
 
@@ -36,10 +38,7 @@ namespace BookShop.Infra.Models
         public string Isbn { get; set; }
 
         [Column(TypeName = "decimal(8, 2)")]
-        public decimal? CoverPrice { get; set; }
-
-        [Required]
-        public int? OnHand { get; set; }
+        public decimal? CoverPrice { get; set; }        
 
         [Required]
         public int Status { get; set; }
@@ -58,5 +57,8 @@ namespace BookShop.Infra.Models
         public virtual Publisher Publisher { get; set; }
         public virtual ICollection<BookImage> BookImages { get; set; }
         public virtual ICollection<BookCategory> BookCategories { get; set; }
+        public virtual ICollection<GoodsReceiptItem> GoodsReceiptItems { get; set; }
+        public virtual Stock Stock { get; set; }
+        public virtual ICollection<StockMovement> StockMovements { get; set; }
     }
 }

@@ -22,11 +22,31 @@ namespace BookShop.Infra
         {
             if (modelBuilder != null)
             {
+                modelBuilder.Entity<Publisher>().Config(
+                    a => a.Property(a => a.TimeInsert).HasDefaultValueSql("getdate()"),
+                    a => a.Property(a => a.TimeUpdate).HasDefaultValueSql("getdate()")
+                    );
+
                 modelBuilder.Entity<Book>().Config(
                     a => a.HasAlternateKey(a => a.Isbn),
                     a => a.Property(a => a.TimeInsert).HasDefaultValueSql("getdate()"),
                     a => a.Property(a => a.TimeUpdate).HasDefaultValueSql("getdate()")
                 );
+
+                modelBuilder.Entity<BookImage>().Config(
+                    a => a.Property(a => a.TimeInsert).HasDefaultValueSql("getdate()"),
+                    a => a.Property(a => a.TimeUpdate).HasDefaultValueSql("getdate()")
+                    );
+
+                modelBuilder.Entity<Category>().Config(
+                    a => a.Property(a => a.TimeInsert).HasDefaultValueSql("getdate()"),
+                    a => a.Property(a => a.TimeUpdate).HasDefaultValueSql("getdate()")
+                    );
+
+                modelBuilder.Entity<BookCategory>().Config(
+                    a => a.HasKey(a => new { a.BookId,a.CategoryId})
+                    );
+
 
                 modelBuilder.Entity<GoodsReceiptItem>().Config(
                     a => a.HasKey(a => new { a.GoodsReceiptId, a.Num })
