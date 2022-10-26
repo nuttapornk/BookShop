@@ -1,0 +1,32 @@
+﻿@model PagingList<BookShop.WebUi.Mediator.Books.Queries.GetBooks.GetBooksRes>
+@{
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(a=>a.NameThai)</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model != null && Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NameThai</td>
+                        <td>@item.NameEng</td>
+                        <td>@item.Isbn</td>
+                        <td>@item.Publisher.Name</td>
+                        <td>@item.CoverPrice</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

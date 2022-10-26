@@ -26,7 +26,7 @@ namespace BookShop.Infra
             if (modelBuilder != null)
             {
                 modelBuilder.Entity<Book>().Config(
-                    a => a.HasAlternateKey(a => a.Isbn),
+                    //a => a.HasAlternateKey(a => a.Isbn),
                     a => a.Property(a => a.TimeInsert).HasDefaultValueSql("getdate()"),
                     a => a.Property(a => a.TimeUpdate).HasDefaultValueSql("getdate()")
                 );
