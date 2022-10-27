@@ -1,10 +1,12 @@
 ﻿using BookShop.Infra;
 using BookShop.WebUi.Models;
+using BookShop.WebUi.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
+using System.ComponentModel.Design;
 using System.Reflection;
 
 namespace BookShop.WebUi
@@ -47,6 +49,7 @@ namespace BookShop.WebUi
 
             services.Configure<AppSetting>(Configuration.GetSection("AppSetting"));
 
+            services.AddScoped<ISelectListService, SelectListService>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)

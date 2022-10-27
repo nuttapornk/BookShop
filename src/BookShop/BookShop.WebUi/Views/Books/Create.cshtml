@@ -1,0 +1,71 @@
+﻿@model BookShop.WebUi.Mediator.Books.Commands.CreateBook.CreateBookCommand
+@{
+    ViewData["Title"] = "CreateBook";
+}
+
+<h1>
+    @ViewBag.Title
+</h1>
+
+<form method="post" class="row"> 
+    <div class="col-5">
+        <div class="mb-2">
+            <label asp-for="NameThai"></label>
+            <input asp-for="NameThai" class="form-control" />
+            <span asp-validation-for="NameThai" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="NameEng"></label>
+            <input asp-for="NameEng" class="form-control" />
+            <span asp-validation-for="NameEng" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Isbn"></label>
+            <input asp-for="Isbn" class="form-control" />
+            <span asp-validation-for="Isbn" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="CoverPrice"></label>
+            <input asp-for="CoverPrice" class="form-control" />
+            <span asp-validation-for="CoverPrice" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="PublisherId"></label>
+            <select asp-for="PublisherId" asp-items="ViewBag.Publisher" class="form-control">
+                <option>Please Select</option>
+            </select>
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Status"></label>
+            <div class="ms-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Status" id="Status1" value="true" checked />
+                    <label class="form-check-label" id="Status1">
+                        Active
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Status" id="Status2" value="false" >
+                    <label class="form-check-label" for="Status2">
+                        Inactive
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi-chevron-left"></i> Back
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="bi-check-lg"></i> Save
+            </button>
+        </div>
+    </div>
+
+</form>

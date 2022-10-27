@@ -35,10 +35,6 @@
 		<ProjectReference Include="..\BookShop.Infra\BookShop.Infra.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Mediator\Books\Commands\" />
-	</ItemGroup>
-
 	<ProjectExtensions>
 		<VisualStudio>
 			<UserProperties />
