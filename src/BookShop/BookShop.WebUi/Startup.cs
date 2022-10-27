@@ -1,4 +1,5 @@
 ﻿using BookShop.Infra;
+using BookShop.WebUi.Mediator;
 using BookShop.WebUi.Models;
 using BookShop.WebUi.Services;
 using FluentValidation;
@@ -47,9 +48,13 @@ namespace BookShop.WebUi
 
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("AppDbContext")));
 
+            services.AddHttpContextAccessor();
+
             services.Configure<AppSetting>(Configuration.GetSection("AppSetting"));
 
             services.AddScoped<ISelectListService, SelectListService>();
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
