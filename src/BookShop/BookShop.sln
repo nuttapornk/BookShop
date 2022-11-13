@@ -5,7 +5,13 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop.Infra", "BookShop.Infra\BookShop.Infra.csproj", "{34F71E7E-DF80-4092-B110-D26A05D81004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.WebUi", "BookShop.WebUi\BookShop.WebUi.csproj", "{197F61D0-E9B5-4A56-BDA3-50199A367375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop.WebUi", "BookShop.WebUi\BookShop.WebUi.csproj", "{197F61D0-E9B5-4A56-BDA3-50199A367375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.WebApi1", "BookShop.WebApi1\BookShop.WebApi1.csproj", "{C14D1BCF-E147-4210-B6F9-8C517EEFEC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.WebApi2", "BookShop.WebApi2\BookShop.WebApi2.csproj", "{A3EA48C4-69B2-4001-B2A1-5347EA44F0F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.Common", "BookShop.Common\BookShop.Common.csproj", "{364FC6DA-61E2-4BD8-9D15-82F54087052B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{197F61D0-E9B5-4A56-BDA3-50199A367375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{197F61D0-E9B5-4A56-BDA3-50199A367375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{197F61D0-E9B5-4A56-BDA3-50199A367375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C14D1BCF-E147-4210-B6F9-8C517EEFEC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C14D1BCF-E147-4210-B6F9-8C517EEFEC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C14D1BCF-E147-4210-B6F9-8C517EEFEC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C14D1BCF-E147-4210-B6F9-8C517EEFEC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3EA48C4-69B2-4001-B2A1-5347EA44F0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3EA48C4-69B2-4001-B2A1-5347EA44F0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3EA48C4-69B2-4001-B2A1-5347EA44F0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3EA48C4-69B2-4001-B2A1-5347EA44F0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{364FC6DA-61E2-4BD8-9D15-82F54087052B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{364FC6DA-61E2-4BD8-9D15-82F54087052B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{364FC6DA-61E2-4BD8-9D15-82F54087052B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{364FC6DA-61E2-4BD8-9D15-82F54087052B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

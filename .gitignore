@@ -1,6 +1,12 @@
 /.vs
 /src/BookShop/.vs
+/src/BookShop/BookShop.Common/bin
+/src/BookShop/BookShop.Common/obj
 /src/BookShop/BookShop.Infra/bin
 /src/BookShop/BookShop.Infra/obj
+/src/BookShop/BookShop.WebApi1/bin
+/src/BookShop/BookShop.WebApi1/obj
+/src/BookShop/BookShop.WebApi2/bin
+/src/BookShop/BookShop.WebApi2/obj
 /src/BookShop/BookShop.WebUi/bin
 /src/BookShop/BookShop.WebUi/obj
