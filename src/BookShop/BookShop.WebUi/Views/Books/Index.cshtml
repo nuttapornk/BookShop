@@ -32,7 +32,15 @@
                         <td>@item.NameThai</td>
                         <td>@item.NameEng</td>
                         <td>@item.Isbn</td>
-                        <td>@item.Publisher.Name</td>
+                        @{
+                            if (item.Publisher != null)
+                            {
+                        <td>@item.Publisher.Name</td>        
+                            }else{
+                                <td></td>
+                            }
+                        }
+                        
                         <td>@item.CoverPrice</td>
                     </tr>
                 }
@@ -40,6 +48,10 @@
         }
     </tbody>
 </table>
+
+<nav>
+    <vc:pager paging-list="@Model" />
+</nav>
 
 <div id="filter" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="filterLabel">
     <div class="offcanvas-header">

@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Confluent.Kafka" Version="1.9.3" />
 		<PackageReference Include="FluentValidation" Version="11.2.2" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2" />
@@ -29,9 +30,12 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="ReflectionIT.Mvc.Paging" Version="6.0.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Hyperion" Version="0.12.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BookShop.Common\BookShop.Common.csproj" />
 		<ProjectReference Include="..\BookShop.Infra\BookShop.Infra.csproj" />
 	</ItemGroup>
 

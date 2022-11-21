@@ -3,7 +3,9 @@ using System.Diagnostics;
 
 namespace BookShop.WebUi.Mediator
 {
-    public class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
+    public class PerformanceBehavior<TRequest, TResponse>
+        : IPipelineBehavior<TRequest, TResponse> where TRequest
+        : IRequest<TResponse>
     {
 
         private readonly Stopwatch _stopwatch;
@@ -22,12 +24,11 @@ namespace BookShop.WebUi.Mediator
             var response = await next();
             _stopwatch.Stop();
 
-
             var elapsed = _stopwatch.ElapsedMilliseconds;
-            if (elapsed)
-            {
+            var requestName = typeof(TRequest).Name;
 
-            }
+            _logger.LogWarning($"Log running request : {requestName} {elapsed} ms.");
+            return response;
         }
     }
 }

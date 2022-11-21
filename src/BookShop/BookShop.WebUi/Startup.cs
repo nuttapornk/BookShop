@@ -30,14 +30,17 @@ namespace BookShop.WebUi
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddFluentValidationAutoValidation();
-
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetValue<string>("RedisSttings:ConnectionString");
+                options.InstanceName = Configuration.GetValue<string>("RedisSttings:ChannelPrefix");
+            });
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSession(option =>
             {
                 option.Cookie.IsEssential = true;
                 option.IdleTimeout = TimeSpan.FromMinutes(30);
             });
-
             services.AddPaging(option => {
                 option.ViewName = "Bootstrap4";
                 option.HtmlIndicatorDown = " <span>&darr;</span>";
@@ -52,8 +55,9 @@ namespace BookShop.WebUi
 
             services.Configure<AppSetting>(Configuration.GetSection("AppSetting"));
 
+            
+            services.AddTransient<IRedisService, RedisService>();
             services.AddScoped<ISelectListService, SelectListService>();
-
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         }
 
