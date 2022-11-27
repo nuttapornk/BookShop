@@ -57,6 +57,7 @@ namespace BookShop.WebUi
 
             
             services.AddTransient<IRedisService, RedisService>();
+
             services.AddScoped<ISelectListService, SelectListService>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         }

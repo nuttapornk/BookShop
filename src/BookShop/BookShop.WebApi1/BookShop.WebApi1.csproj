@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="FluentValidation" Version="11.2.2" />
@@ -23,6 +24,10 @@
   <ItemGroup>
     <ProjectReference Include="..\BookShop.Common\BookShop.Common.csproj" />
     <ProjectReference Include="..\BookShop.Infra\BookShop.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

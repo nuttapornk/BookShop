@@ -8,6 +8,8 @@ using ReflectionIT.Mvc.Paging;
 using System.Reflection;
 using BookShop.Common;
 using BookShop.WebApi1.Process;
+using BookShop.WebApi1.MessageHandlers;
+using BookShop.WebApi1.Middleware;
 
 namespace BookShop.WebApi1
 {
@@ -38,6 +40,11 @@ namespace BookShop.WebApi1
             
             services.Configure<AppSetting>(Configuration.GetSection("AppSetting"));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
+
+            //services.AddTransient<ValidateHeaderHandler>();
+            //services.AddHttpClient("HttpMessageHandler")
+            //    .AddHttpMessageHandler<ValidateHeaderHandler>();
+
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -56,6 +63,9 @@ namespace BookShop.WebApi1
             }
             app.UseHttpsRedirection();
             //app.UseAuthentication();
+            
+            app.UseMiddleware<ApiKeyMiddleware>();
+
             app.MapControllers();
             app.Run();
         }
