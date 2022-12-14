@@ -1,6 +1,7 @@
 using BookShop.Infra;
 using BookShop.WebUi;
 using Microsoft.EntityFrameworkCore;
+using BookShop.WebUi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var startup = new Startup(builder.Environment);
@@ -8,6 +9,9 @@ var startup = new Startup(builder.Environment);
 startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
+
+app.UseValidateTokenMiddleware();
+
 using (var scope = app.Services.CreateScope())
 {
     var service = scope.ServiceProvider;

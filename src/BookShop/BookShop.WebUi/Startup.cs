@@ -1,5 +1,6 @@
 ﻿using BookShop.Infra;
 using BookShop.WebUi.Mediator;
+using BookShop.WebUi.Middleware;
 using BookShop.WebUi.Models;
 using BookShop.WebUi.Services;
 using FluentValidation;
@@ -60,6 +61,10 @@ namespace BookShop.WebUi
 
             services.AddScoped<ISelectListService, SelectListService>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
+
+            //IMiddlewareFactory must add transient
+            services.AddTransient<ValidateTokenMiddleware>();
+            //services.AddTransient<ValidateHeadersMiddleware>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -73,6 +78,10 @@ namespace BookShop.WebUi
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+
+            //app.UseMiddleware<ValidateTokenMiddleware>();
+            app.UseMiddleware<ValidateHeadersMiddleware>();
 
             app.UseStaticFiles();
             app.UseRouting();
