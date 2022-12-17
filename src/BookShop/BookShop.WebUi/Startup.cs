@@ -1,4 +1,5 @@
 ﻿using BookShop.Infra;
+using BookShop.WebUi.Extentions;
 using BookShop.WebUi.Mediator;
 using BookShop.WebUi.Middleware;
 using BookShop.WebUi.Models;
@@ -6,10 +7,13 @@ using BookShop.WebUi.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
 using System.ComponentModel.Design;
 using System.Reflection;
+using System.Security.Claims;
 
 namespace BookShop.WebUi
 {
@@ -37,11 +41,7 @@ namespace BookShop.WebUi
                 options.InstanceName = Configuration.GetValue<string>("RedisSttings:ChannelPrefix");
             });
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddSession(option =>
-            {
-                option.Cookie.IsEssential = true;
-                option.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
+           
             services.AddPaging(option => {
                 option.ViewName = "Bootstrap4";
                 option.HtmlIndicatorDown = " <span>&darr;</span>";
@@ -65,6 +65,27 @@ namespace BookShop.WebUi
             //IMiddlewareFactory must add transient
             services.AddTransient<ValidateTokenMiddleware>();
             //services.AddTransient<ValidateHeadersMiddleware>();
+
+            //add service keycloak
+            services.AddIdentityService(Configuration);
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("users", policy =>
+                    policy.RequireAssertion(context =>
+                    context.User.HasClaim(a => a.Value == "user" || a.Value == "admin")));
+
+                options.AddPolicy("admins", policy =>
+                    policy.RequireClaim(ClaimTypes.Role, "admin"));
+
+                options.AddPolicy("noaccess", policy =>
+                    policy.RequireClaim(ClaimTypes.Role, "noaccess"));
+            });
+            //Database
+            //AppSetting json -> Model
+            //CustomerServices
+            //PipelineBehavior
+
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -85,7 +106,11 @@ namespace BookShop.WebUi
 
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseSession();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -94,7 +119,7 @@ namespace BookShop.WebUi
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Books}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.Run();

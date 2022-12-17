@@ -1,7 +1,7 @@
 using BookShop.Infra;
 using BookShop.WebUi;
 using Microsoft.EntityFrameworkCore;
-using BookShop.WebUi.Middleware;
+using BookShop.WebUi.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 var startup = new Startup(builder.Environment);

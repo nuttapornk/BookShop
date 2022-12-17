@@ -1,4 +1,6 @@
-﻿namespace BookShop.WebUi.Middleware
+﻿using BookShop.WebUi.Middleware;
+
+namespace BookShop.WebUi.Extentions
 {
     public static class MiddlewareExtensions
     {

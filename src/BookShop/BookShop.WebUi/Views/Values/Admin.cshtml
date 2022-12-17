@@ -1,0 +1,17 @@
+﻿@{
+}
+
+<h1>
+    Admin
+</h1>
+
+@if(User.Identity.IsAuthenticated){
+    @User.Identity.Name
+}
+<dl>
+    @foreach (var item in User.Claims)
+    {
+        <dt>@item.Type</dt>
+        <dd>@item.Value</dd>
+    }
+</dl>

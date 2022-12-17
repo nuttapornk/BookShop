@@ -3,22 +3,22 @@ using BookShop.WebUi.Mediator.Books.Commands.CreateBook;
 using BookShop.WebUi.Mediator.Books.Queries.GetBooks;
 using BookShop.WebUi.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookShop.WebUi.Controllers
 {
     public class BooksController : MvcController
     {
+        private readonly ILogger _logger;
         private readonly AppDbContext _context;
         private readonly ISelectListService _selectList;
 
-        public BooksController(AppDbContext context, ISelectListService selectList)
+        public BooksController(ILogger logger, AppDbContext context, ISelectListService selectList)
         {
+            _logger = logger;   
             _context = context;
             _selectList = selectList;
         }
-
+        
         public async Task<IActionResult> Index(GetBooksQuery model)
         {
             ViewData["SortNameThai"] = model.SortExpresstion == "NameThai" ? "-NameThai" : "NameThai";
